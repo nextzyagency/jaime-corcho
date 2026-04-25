@@ -1,0 +1,397 @@
+---
+import { Image } from 'astro:assets'
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/ui/Header.astro'
+import Footer from '../components/ui/Footer.astro'
+import shopImg from '../assets/shop-interior.png'
+
+const milestones = [
+  { year: '2018', label: 'Inicio', desc: 'Jaime comienza formándose en técnicas de barbería clásica en Barranquilla.' },
+  { year: '2020', label: 'Evolución', desc: 'Integra el análisis de morfología facial como base de cada servicio.' },
+  { year: '2022', label: 'Marca propia', desc: 'Nace Jaime Corcho como propuesta premium diferenciada en la ciudad.' },
+  { year: '2024', label: 'Referente', desc: 'Más de 500 clientes y posicionamiento como barbería de lujo en Barranquilla.' },
+]
+
+const differentiators = [
+  {
+    title: 'Análisis de morfología facial',
+    desc: 'Antes de cualquier servicio evaluamos la forma de tu rostro para garantizar un resultado que potencie tus rasgos específicos.',
+    icon: 'face',
+  },
+  {
+    title: 'Técnico, no rutinario',
+    desc: 'Aplicamos metodología de ingeniería de imagen: cada decisión estética tiene una razón técnica y un impacto medible.',
+    icon: 'scissors',
+  },
+  {
+    title: 'Experiencia premium',
+    desc: 'El entorno, los materiales y el trato están diseñados para que cada visita sea una experiencia, no una simple cita.',
+    icon: 'star',
+  },
+]
+---
+
+<Layout
+  title="Nosotros | Jaime Corcho — Barbería de Lujo en Barranquilla con Enfoque en Imagen Masculina"
+  description="Conoce la historia de Jaime Corcho, barbería premium en Barranquilla. Nuestro enfoque en morfología facial y asesoría de imagen masculina nos diferencia de cualquier barbería convencional."
+  canonical="https://jaimecorcho.com/nosotros"
+>
+  <Header />
+  <main id="main-content">
+
+    <!-- Page Hero -->
+    <section class="about-hero section" aria-label="Sobre Jaime Corcho Barbería">
+      <div class="container about-hero__inner">
+        <div>
+          <span class="eyebrow">Nosotros</span>
+          <h1 class="gsap-up">
+            La barbería premium<br />
+            <em style="color:var(--color-gold);font-style:italic">que Barranquilla necesitaba</em>
+          </h1>
+          <span class="gold-line"></span>
+          <p class="about-hero__sub gsap-up">
+            No somos una barbería más. Somos un estudio de imagen masculina
+            donde la precisión técnica y la asesoría personalizada son el estándar,
+            no la excepción.
+          </p>
+        </div>
+        <!-- Positioning image -->
+        <div class="about-hero__img-container gsap-right">
+          <Image
+            src={shopImg}
+            alt="Interior de la barbería premium Jaime Corcho en Barranquilla"
+            class="about-hero__img"
+            width={600}
+            height={800}
+          />
+          <div class="about-hero__statement">
+            <p class="about-hero__quote">
+              "Un corte de cabello no es solo estética — es la primera
+              información que entregas sobre quién eres."
+            </p>
+            <span class="about-hero__quote-author">— Jaime Corcho</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Historia -->
+    <section class="about-history section" aria-labelledby="history-heading">
+      <div class="container">
+        <span class="eyebrow">Historia</span>
+        <h2 id="history-heading" class="gsap-up">De la frustración al método</h2>
+        <span class="gold-line"></span>
+
+        <div class="about-history__grid">
+          <div class="about-history__text gsap-left">
+            <p>
+              Jaime Corcho nació de una observación simple: en Barranquilla existían
+              decenas de barberías, pero ninguna ofrecía lo que realmente marca la diferencia
+              — un análisis técnico del rostro antes de tomar las tijeras.
+            </p>
+            <p>
+              Durante años de experiencia viendo clientes insatisfechos con resultados
+              genéricos, Jaime desarrolló un método propio basado en la arquitectura del rostro:
+              entender cómo el corte, la barba y el cuidado facial interactúan con la
+              morfología única de cada cliente para construir una imagen poderosa.
+            </p>
+            <p>
+              Hoy, ese método es la base de cada servicio en Jaime Corcho.
+              El resultado es una clientela de profesionales y emprendedores que entienden
+              que su imagen es parte de su marca personal.
+            </p>
+          </div>
+
+          <!-- Timeline -->
+          <div class="about-history__timeline gsap-right">
+            {milestones.map(m => (
+              <div class="about-timeline__item">
+                <span class="about-timeline__year">{m.year}</span>
+                <div class="about-timeline__content">
+                  <strong>{m.label}</strong>
+                  <p>{m.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Diferenciadores -->
+    <section class="about-diff section" aria-labelledby="diff-heading">
+      <div class="container">
+        <div class="about-diff__header">
+          <span class="eyebrow">Diferenciadores</span>
+          <h2 id="diff-heading" class="gsap-up">
+            Por qué no somos<br />
+            <em style="color:var(--color-gold);font-style:italic">una barbería convencional</em>
+          </h2>
+          <span class="gold-line"></span>
+        </div>
+
+        <div class="about-diff__grid">
+          {differentiators.map((d, i) => (
+            <div class="card about-diff__card gsap-up" style={`--delay:${i * 0.12}s`}>
+              <div class="about-diff__icon">
+                {d.icon === 'face' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                )}
+                {d.icon === 'scissors' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+                )}
+                {d.icon === 'star' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                )}
+              </div>
+              <h3>{d.title}</h3>
+              <p>{d.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Prueba social -->
+    <section class="about-proof section" aria-labelledby="proof-heading">
+      <div class="container">
+        <span class="eyebrow">Resultados</span>
+        <h2 id="proof-heading" class="gsap-up">Números que respaldan<br /><em style="color:var(--color-gold);font-style:italic">el método</em></h2>
+        <span class="gold-line"></span>
+        <div class="about-proof__grid">
+          {[
+            { num: '+500', label: 'Clientes atendidos', sub: 'Desde 2018' },
+            { num: '4.9★', label: 'Valoración en Google', sub: 'Media de reseñas' },
+            { num: '3', label: 'Servicios especializados', sub: 'Corte, barba y facial' },
+            { num: '100%', label: 'Personalizado', sub: 'Sin plantillas genéricas' },
+          ].map(p => (
+            <div class="about-proof__stat gsap-up">
+              <span class="about-proof__num">{p.num}</span>
+              <strong>{p.label}</strong>
+              <span>{p.sub}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CTA -->
+    <section class="about-cta section" aria-label="Agendar cita barbería Barranquilla">
+      <div class="container about-cta__inner gsap-up">
+        <div>
+          <h2>¿Quieres vivir la experiencia<br /><em style="color:var(--color-gold);font-style:italic">Jaime Corcho?</em></h2>
+          <p>Agenda tu primera cita y descubre por qué somos la barbería premium de referencia en Barranquilla.</p>
+        </div>
+        <div class="about-cta__actions">
+          <a
+            href="https://wa.me/573001234567?text=Hola%2C%20quiero%20agendar%20mi%20primera%20cita"
+            title="Agendar primera cita barbería premium Barranquilla"
+            class="btn-primary"
+            target="_blank"
+            rel="noopener"
+          >Agendar primera cita</a>
+          <a href="/servicios" title="Ver todos los servicios de barbería Barranquilla" class="btn-outline">Ver servicios</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+.about-hero__inner {
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 5rem;
+  align-items: center;
+  padding-top: 8rem;
+}
+.about-hero__sub { max-width: 55ch; }
+.about-hero__img-container {
+  position: relative;
+  aspect-ratio: 3/4;
+}
+.about-hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.1);
+}
+.about-hero__statement {
+  padding: 2.5rem;
+  border: 1px solid var(--color-border);
+  background: rgba(17, 17, 17, 0.9);
+  backdrop-filter: blur(10px);
+  position: absolute;
+  bottom: -2rem;
+  left: -4rem;
+  right: 2rem;
+  z-index: 2;
+}
+.about-hero__statement::before {
+  content: '"';
+  position: absolute;
+  top: -1rem;
+  left: 1.5rem;
+  font-family: var(--font-serif);
+  font-size: 5rem;
+  color: var(--color-gold);
+  line-height: 1;
+  opacity: 0.4;
+}
+.about-hero__quote {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--color-white);
+  line-height: 1.6;
+}
+.about-hero__quote-author {
+  display: block;
+  margin-top: 1.25rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.about-history__grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  margin-top: 2rem;
+  align-items: start;
+}
+.about-history__text { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.about-history__timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--color-border);
+}
+.about-timeline__item {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.about-timeline__item:last-child { border-bottom: none; }
+.about-timeline__year {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  width: 3rem;
+  flex-shrink: 0;
+}
+.about-timeline__content strong {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--color-white);
+  margin-bottom: 0.25rem;
+}
+.about-timeline__content p { font-size: 0.82rem; }
+
+.about-diff__header { margin-bottom: 3rem; }
+.about-diff__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.about-diff__card { padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+.about-diff__icon {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+}
+.about-diff__card h3 { font-size: 1.1rem; margin: 0; }
+.about-diff__card p { font-size: 0.875rem; }
+
+.about-proof__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--color-border);
+  margin-top: 2rem;
+}
+.about-proof__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 2.5rem 1.5rem;
+  border-right: 1px solid var(--color-border);
+  text-align: center;
+}
+.about-proof__stat:last-child { border-right: none; }
+.about-proof__num {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: 1;
+}
+.about-proof__stat strong {
+  font-size: 0.875rem;
+  color: var(--color-white);
+}
+.about-proof__stat span { font-size: 0.75rem; color: var(--color-gray); }
+
+.about-cta__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 3rem;
+  border: 1px solid var(--color-gold);
+  background: rgba(194,168,120,0.04);
+}
+.about-cta__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  .about-hero__inner { grid-template-columns: 1fr; padding-top: 7rem; }
+  .about-hero__img-container { aspect-ratio: 16/9; margin-bottom: 4rem; }
+  .about-hero__statement { position: relative; bottom: 0; left: 0; right: 0; margin-top: -2rem; }
+  .about-history__grid { grid-template-columns: 1fr; }
+  .about-diff__grid { grid-template-columns: 1fr; }
+  .about-proof__grid { grid-template-columns: 1fr 1fr; }
+  .about-proof__stat:nth-child(2) { border-right: none; }
+  .about-proof__stat:nth-child(3) { border-right: 1px solid var(--color-border); }
+  .about-proof__stat:nth-child(1),
+  .about-proof__stat:nth-child(2) { border-bottom: 1px solid var(--color-border); }
+}
+@media (max-width: 600px) {
+  .about-proof__grid { grid-template-columns: 1fr; }
+  .about-proof__stat { border-right: none !important; border-bottom: 1px solid var(--color-border); }
+}
+</style>
+
+<script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+gsap.utils.toArray<HTMLElement>('.gsap-up, .gsap-left, .gsap-right').forEach(el => {
+  const x = el.classList.contains('gsap-left') ? -40 : el.classList.contains('gsap-right') ? 40 : 0
+  gsap.from(el, {
+    y: x === 0 ? 40 : 0,
+    x,
+    opacity: 0,
+    duration: 0.9,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: el, start: 'top 85%' },
+  })
+})
+</script>

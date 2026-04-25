@@ -1,0 +1,442 @@
+---
+import Layout  from '../layouts/Layout.astro'
+import Header  from '../components/ui/Header.astro'
+import Footer  from '../components/ui/Footer.astro'
+
+const services = [
+  {
+    id: 'corte',
+    num: '01',
+    name: 'Corte de Autor',
+    duration: '45 min',
+    price: '$65.000',
+    keyword: 'Corte de cabello profesional Barranquilla',
+    tagline: 'Tu corte, tu identidad.',
+    problem: {
+      title: '¿Cansado de salir igual que entraste?',
+      body: 'La mayoría de barberías en Barranquilla aplican el mismo corte sin importar la forma de tu cara, tu estilo o tu objetivo de imagen. El resultado: un corte genérico que no te representa ni aporta nada a tu presencia.',
+      consequences: ['Cortes que no duran ni dos semanas', 'Sin asesoría ni análisis previo', 'Resultado igual para todos los clientes'],
+    },
+    solution: {
+      title: 'Precisión técnica + análisis de morfología facial',
+      body: 'En el Corte de Autor comenzamos con un análisis completo de tu morfología facial para identificar qué corte potencia tus rasgos. Combinamos técnicas europeas y americanas de alta precisión para un resultado que realmente transforma tu imagen.',
+    },
+    benefits: [
+      { label: 'Imagen que proyecta autoridad', desc: 'Un corte bien ejecutado comunica confianza y profesionalismo en cada entorno.' },
+      { label: 'Resultado duradero', desc: 'Técnicas de precisión que mantienen la forma por más tiempo, ahorrándote visitas innecesarias.' },
+      { label: 'Estilo alineado a ti', desc: 'No existe un corte universal. El tuyo se construye sobre tu cara, tu vida y tu objetivo.' },
+      { label: 'Asesoría incluida', desc: 'Te explicamos cómo mantener el resultado en casa con la rutina correcta.' },
+    ],
+    process: [
+      { step: '01', label: 'Análisis facial', desc: 'Evaluamos la forma de tu rostro y estructura ósea.' },
+      { step: '02', label: 'Asesoría de estilo', desc: 'Definimos el corte ideal según tu imagen y objetivos.' },
+      { step: '03', label: 'Corte de precisión', desc: 'Aplicamos técnicas europeas y americanas con tijera y máquina.' },
+      { step: '04', label: 'Acabado premium', desc: 'Styling con productos de alta gama para un resultado impecable.' },
+    ],
+  },
+  {
+    id: 'barba',
+    num: '02',
+    name: 'Diseño de Barba',
+    duration: '30 min',
+    price: '$45.000',
+    keyword: 'Diseño de barba Barranquilla',
+    tagline: 'La barba correcta lo cambia todo.',
+    problem: {
+      title: '¿Una barba sin forma que resta en lugar de sumar?',
+      body: 'Una barba mal diseñada puede ocultar tus rasgos positivos y acentuar los negativos. Sin un diseño adaptado a tu estructura facial, la barba se convierte en un elemento que resta presencia en lugar de potenciarla.',
+      consequences: ['Diseño genérico sin análisis de rostro', 'Líneas que no encajan con tu mandíbula', 'Resultados inconsistentes en cada visita'],
+    },
+    solution: {
+      title: 'Diseño personalizado adaptado a tu estructura facial',
+      body: 'Analizamos tu morfología facial para definir las líneas exactas que mejor encajan con tu mandíbula, mejillas y cuello. Cada milímetro importa. Usamos navaja de precisión y técnicas de barbería clásica para un resultado limpio y duradero.',
+    },
+    benefits: [
+      { label: 'Barba que encuadra tu rostro', desc: 'Líneas diseñadas específicamente para equilibrar y potenciar tus rasgos.' },
+      { label: 'Acabado con navaja de precisión', desc: 'Bordes definidos y limpios que marcan la diferencia en tu presencia.' },
+      { label: 'Hidratación post-servicio', desc: 'Tratamiento con productos de calidad para mantener la piel y el vello en óptimas condiciones.' },
+      { label: 'Rutina de mantenimiento', desc: 'Te asesoramos sobre cómo mantener el diseño entre citas.' },
+    ],
+    process: [
+      { step: '01', label: 'Consulta de morfología', desc: 'Identificamos qué diseño favorece tu estructura facial.' },
+      { step: '02', label: 'Diseño y guía', desc: 'Trazamos las líneas del diseño antes de comenzar el perfilado.' },
+      { step: '03', label: 'Perfilado con navaja', desc: 'Definición precisa de cada línea con navaja profesional.' },
+      { step: '04', label: 'Hidratación y cierre', desc: 'Aplicamos bálsamo y productos para nutrir piel y barba.' },
+    ],
+  },
+  {
+    id: 'facial',
+    num: '03',
+    name: 'Ritual Facial',
+    duration: '60 min',
+    price: '$80.000',
+    keyword: 'Tratamiento facial masculino Barranquilla',
+    tagline: 'Tu piel, la base de una imagen premium.',
+    problem: {
+      title: '¿Tu piel refleja descuido cuando quieres proyectar éxito?',
+      body: 'El clima de Barranquilla, el estrés y la falta de rutina afectan directamente el estado de la piel masculina. Poros obstruidos, piel opaca y textura irregular comunican descuido incluso cuando vas bien vestido y bien cortado.',
+      consequences: ['Piel opaca y sin luminosidad', 'Poros obstruidos por el calor y la humedad', 'Sin rutina clara ni productos adecuados'],
+    },
+    solution: {
+      title: 'Proceso completo de limpieza, hidratación y cuidado',
+      body: 'El Ritual Facial es un proceso técnico de 60 minutos que combina limpieza profunda, exfoliación, extracción e hidratación intensiva. Usamos activos de alta concentración adaptados al tipo de piel masculina en el clima tropical de Barranquilla.',
+    },
+    benefits: [
+      { label: 'Piel visiblemente más limpia', desc: 'Eliminamos impurezas y obstrucciones para una textura más uniforme.' },
+      { label: 'Hidratación profunda', desc: 'Activos de alta concentración que nutren y protegen la piel masculina.' },
+      { label: 'Efecto inmediato y progresivo', desc: 'Notarás la diferencia desde la primera sesión, con mejora continua.' },
+      { label: 'Rutina personalizada', desc: 'Te damos un plan de cuidado domiciliario adaptado a tu tipo de piel.' },
+    ],
+    process: [
+      { step: '01', label: 'Análisis de piel', desc: 'Evaluamos tipo de piel, sensibilidades y necesidades específicas.' },
+      { step: '02', label: 'Limpieza profunda', desc: 'Removemos impurezas y células muertas con técnica de doble limpieza.' },
+      { step: '03', label: 'Exfoliación + extracción', desc: 'Liberamos poros y mejoramos la textura de la piel.' },
+      { step: '04', label: 'Masaje + hidratación', desc: 'Aplicamos activos y realizamos masaje facial para cerrar el ritual.' },
+    ],
+  },
+]
+---
+
+<Layout
+  title="Servicios de Barbería Premium en Barranquilla | Jaime Corcho — Corte, Barba y Facial"
+  description="Servicios de barbería premium en Barranquilla: Corte de Autor ($65.000), Diseño de Barba ($45.000) y Ritual Facial ($80.000). Análisis de morfología facial incluido en cada servicio."
+  canonical="https://jaimecorcho.com/servicios"
+>
+  <Header />
+  <main id="main-content">
+
+    <!-- Page Hero -->
+    <section class="page-hero section" aria-label="Servicios de barbería premium Barranquilla">
+      <div class="container page-hero__inner">
+        <div class="page-hero__content">
+          <span class="eyebrow">Servicios</span>
+          <h1 class="page-hero__h1">
+            Corte de cabello profesional<br />
+            <em>y más en Barranquilla</em>
+          </h1>
+          <span class="gold-line"></span>
+          <p>
+            Tres experiencias diseñadas con un mismo principio: cada servicio debe
+            potenciar tu imagen de forma real y medible. Sin genéricos, sin atajos.
+          </p>
+        </div>
+        <!-- Quick nav -->
+        <nav class="page-hero__nav" aria-label="Servicios disponibles">
+          {services.map(s => (
+            <a href={`#${s.id}`} title={s.keyword} class="page-hero__nav-link">
+              <span class="page-hero__nav-num">{s.num}</span>
+              <span>{s.name}</span>
+              <span class="page-hero__nav-price">{s.price}</span>
+            </a>
+          ))}
+        </nav>
+      </div>
+    </section>
+
+    <!-- Services detail -->
+    {services.map((s, si) => (
+      <article class="srv section" id={s.id} aria-labelledby={`srv-heading-${s.id}`}>
+        <div class="container">
+
+          <!-- Service header -->
+          <div class="srv__header">
+            <span class="srv__num" aria-hidden="true">{s.num}</span>
+            <div>
+              <span class="eyebrow">{s.keyword}</span>
+              <h2 id={`srv-heading-${s.id}`} class="gsap-up">{s.name}</h2>
+              <p class="srv__tagline">{s.tagline}</p>
+            </div>
+            <div class="srv__price-box">
+              <span class="srv__price">{s.price}</span>
+              <span class="srv__duration">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                {s.duration}
+              </span>
+              <a
+                href={`https://wa.me/573001234567?text=Quiero%20reservar%20${encodeURIComponent(s.name)}`}
+                title={`Reservar ${s.name} — ${s.keyword}`}
+                class="btn-primary"
+                target="_blank"
+                rel="noopener"
+              >Reservar ahora</a>
+            </div>
+          </div>
+
+          <div class="divider" style="margin-block:3rem"></div>
+
+          <div class="srv__body">
+
+            <!-- Problem -->
+            <div class="srv__block gsap-up">
+              <span class="eyebrow">El problema</span>
+              <h3>{s.problem.title}</h3>
+              <p>{s.problem.body}</p>
+              <ul class="srv__consequences">
+                {s.problem.consequences.map(c => (
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C2A878" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    {c}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Solution -->
+            <div class="srv__block gsap-up">
+              <span class="eyebrow">La solución</span>
+              <h3>{s.solution.title}</h3>
+              <p>{s.solution.body}</p>
+            </div>
+
+            <!-- Benefits -->
+            <div class="srv__block gsap-up">
+              <span class="eyebrow">Beneficios</span>
+              <h3>Lo que obtienes</h3>
+              <div class="srv__benefits-grid">
+                {s.benefits.map(b => (
+                  <div class="card srv__benefit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C2A878" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <strong>{b.label}</strong>
+                    <p>{b.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Process -->
+            <div class="srv__block gsap-up">
+              <span class="eyebrow">Proceso</span>
+              <h3>Cómo funciona</h3>
+              <div class="srv__steps">
+                {s.process.map((step, pi) => (
+                  <div class="srv__step">
+                    <span class="srv__step-num">{step.step}</span>
+                    <div class="srv__step-line" aria-hidden="true"></div>
+                    <strong class="srv__step-label">{step.label}</strong>
+                    <p class="srv__step-desc">{step.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+
+          <!-- CTA -->
+          <div class="srv__cta gsap-up">
+            <div>
+              <h3>¿Listo para transformar tu imagen?</h3>
+              <p>Agenda tu {s.name} hoy y da el primer paso.</p>
+            </div>
+            <a
+              href={`https://wa.me/573001234567?text=Quiero%20reservar%20${encodeURIComponent(s.name)}`}
+              title={`Agendar ${s.name} barbería premium Barranquilla`}
+              class="btn-primary"
+              target="_blank"
+              rel="noopener"
+            >
+              Agendar {s.name}
+            </a>
+          </div>
+
+        </div>
+        {si < services.length - 1 && <div class="divider" style="margin-top:var(--section-py)"></div>}
+      </article>
+    ))}
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+/* Page hero */
+.page-hero__inner {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 4rem;
+  align-items: center;
+  padding-top: 8rem;
+}
+.page-hero__h1 { margin-top: 0.5rem; }
+.page-hero__h1 em { color: var(--color-gold); font-style: italic; }
+.page-hero__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--color-border);
+}
+.page-hero__nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-gray);
+  transition: background 0.25s, color 0.25s;
+}
+.page-hero__nav-link:last-child { border-bottom: none; }
+.page-hero__nav-link:hover { background: var(--color-card); color: var(--color-white); }
+.page-hero__nav-num {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--color-gold);
+  width: 2rem;
+}
+.page-hero__nav-price {
+  margin-left: auto;
+  font-family: var(--font-serif);
+  color: var(--color-gold);
+  font-size: 1rem;
+}
+
+/* Service articles */
+.srv__header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 2rem;
+  align-items: start;
+}
+.srv__num {
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--color-border);
+  line-height: 1;
+}
+.srv__tagline {
+  font-style: italic;
+  color: var(--color-gold);
+  font-size: 1rem;
+  margin-top: 0.25rem;
+}
+.srv__price-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+.srv__price {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-gold);
+}
+.srv__duration {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray);
+}
+
+.srv__body { display: flex; flex-direction: column; gap: 4rem; }
+
+.srv__block h3 { margin: 0.5rem 0 1rem; }
+
+.srv__consequences {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+.srv__consequences li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  color: var(--color-gray);
+}
+
+.srv__benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+.srv__benefit {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.srv__benefit strong {
+  font-size: 0.9rem;
+  color: var(--color-white);
+}
+.srv__benefit p { font-size: 0.82rem; }
+
+/* Process steps */
+.srv__steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 1.5rem;
+  border: 1px solid var(--color-border);
+}
+.srv__step {
+  padding: 2rem 1.5rem;
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.srv__step:last-child { border-right: none; }
+.srv__step-num {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: 1;
+}
+.srv__step-label {
+  font-size: 0.9rem;
+  color: var(--color-white);
+}
+.srv__step-desc { font-size: 0.8rem; }
+
+/* Service CTA */
+.srv__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 4rem;
+  padding: 2.5rem;
+  border: 1px solid var(--color-gold);
+  background: rgba(194,168,120,0.04);
+}
+.srv__cta h3 { font-size: 1.5rem; margin-bottom: 0.35rem; }
+
+@media (max-width: 900px) {
+  .page-hero__inner { grid-template-columns: 1fr; padding-top: 7rem; }
+  .srv__header { grid-template-columns: auto 1fr; }
+  .srv__price-box { align-items: flex-start; grid-column: 1/-1; }
+  .srv__steps { grid-template-columns: 1fr 1fr; }
+  .srv__step { border-bottom: 1px solid var(--color-border); }
+  .srv__benefits-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .srv__steps { grid-template-columns: 1fr; }
+}
+</style>
+
+<script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+gsap.utils.toArray<HTMLElement>('.srv__block').forEach(block => {
+  gsap.from(block, {
+    y: 35,
+    opacity: 0,
+    duration: 0.8,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: block, start: 'top 85%' },
+  })
+})
+</script>

@@ -1,0 +1,32 @@
+---
+import Layout  from '../layouts/Layout.astro'
+import Header  from '../components/ui/Header.astro'
+import Footer  from '../components/ui/Footer.astro'
+import Hero    from '../components/sections/Hero.astro'
+import Concept from '../components/sections/Concept.astro'
+import Trust   from '../components/sections/Trust.astro'
+import Services from '../components/sections/Services.astro'
+import Cta     from '../components/sections/Cta.astro'
+import Faq     from '../components/sections/Faq.astro'
+---
+
+<Layout
+  title="Barbería Premium en Barranquilla | Jaime Corcho — Corte de Autor, Diseño de Barba"
+  description="Barbería premium en Barranquilla especializada en corte de cabello profesional, diseño de barba y rituales faciales masculinos. Análisis de morfología facial incluido. Agenda tu cita ahora."
+  canonical="https://jaimecorcho.com/"
+>
+  <Header />
+  <main id="main-content">
+    <Hero />
+    <Concept />
+    <div class="divider"></div>
+    <Services />
+    <div class="divider"></div>
+    <Trust />
+    <div class="divider"></div>
+    <Cta />
+    <div class="divider"></div>
+    <Faq />
+  </main>
+  <Footer />
+</Layout>

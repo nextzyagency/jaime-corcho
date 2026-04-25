@@ -1,0 +1,182 @@
+---
+import { Image } from 'astro:assets'
+import conceptImg from '../../assets/shop-interior.png'
+---
+
+<section class="concept section" aria-labelledby="concept-heading">
+  <div class="container concept__grid">
+    
+    <div class="concept__content">
+      <span class="eyebrow gsap-fade">Promesa y Concepto</span>
+      <h2 id="concept-heading" class="gsap-up">
+        Ingeniería de imagen <br />
+        <em style="color:var(--color-gold);font-style:italic">basada en morfología</em>
+      </h2>
+      <span class="gold-line gsap-fade"></span>
+      <div class="concept__text gsap-up">
+        <p>
+          En Jaime Corcho no creemos en los cortes de catálogo. Creemos en la 
+          arquitectura del rostro. Cada servicio comienza con un análisis profundo 
+          de tus facciones para diseñar un resultado que no solo te haga lucir bien, 
+          sino que proyecte tu verdadera identidad.
+        </p>
+        <p>
+          Nuestra promesa es simple: precisión técnica absoluta en un entorno 
+          de exclusividad diseñado para el hombre moderno.
+        </p>
+      </div>
+      
+      <div class="concept__features">
+        <div class="concept__feature gsap-up">
+          <div class="concept__feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 7h-9m9 4h-6m6 4H10M4 17l6-6-6-6"/></svg>
+          </div>
+          <div>
+            <strong>Análisis Facial</strong>
+            <span>Diseño basado en tus rasgos únicos</span>
+          </div>
+        </div>
+        <div class="concept__feature gsap-up">
+          <div class="concept__feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <strong>Exclusividad</strong>
+            <span>Atención 1 a 1 sin prisas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept__image gsap-right">
+      <div class="concept__image-frame">
+        <Image 
+          src={conceptImg} 
+          alt="Concepto de barbería premium Jaime Corcho" 
+          class="concept__img"
+          width={600}
+          height={800}
+        />
+        <div class="concept__image-accent"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.concept__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.concept__text p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.concept__features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.concept__feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.concept__feature-icon {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+.concept__feature strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-white);
+  margin-bottom: 0.25rem;
+}
+.concept__feature span {
+  font-size: 0.8rem;
+  color: var(--color-gray);
+}
+
+.concept__image {
+  position: relative;
+}
+.concept__image-frame {
+  position: relative;
+  aspect-ratio: 4/5;
+  border: 1px solid var(--color-border);
+  padding: 1rem;
+}
+.concept__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.concept__image-accent {
+  position: absolute;
+  top: -2rem;
+  right: -2rem;
+  width: 8rem;
+  height: 8rem;
+  border: 2px solid var(--color-gold);
+  z-index: -1;
+  opacity: 0.5;
+}
+
+@media (max-width: 900px) {
+  .concept__grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  .concept__image {
+    order: -1;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .concept__features {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+gsap.utils.toArray<HTMLElement>('.concept .gsap-up').forEach((el) => {
+  gsap.from(el, {
+    y: 40,
+    opacity: 0,
+    duration: 0.8,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 85%',
+    }
+  })
+})
+
+gsap.from('.concept__img', {
+  scale: 1.1,
+  opacity: 0,
+  duration: 1.2,
+  ease: 'power3.out',
+  scrollTrigger: {
+    trigger: '.concept__image',
+    start: 'top 80%',
+  }
+})
+</script>

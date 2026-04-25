@@ -1,0 +1,204 @@
+---
+const testimonials = [
+  {
+    name: 'Carlos Mendoza',
+    role: 'Gerente comercial',
+    text: 'Por primera vez en mi vida un barbero me explicó qué corte se adapta a la forma de mi cara. El resultado fue brutal.',
+    stars: 5,
+  },
+  {
+    name: 'Andrés Palomino',
+    role: 'Emprendedor',
+    text: 'Fui por curiosidad y me quedé como cliente fijo. El nivel de detalle en el diseño de barba es algo que no encuentras en otro sitio de Barranquilla.',
+    stars: 5,
+  },
+  {
+    name: 'Felipe Ruiz',
+    role: 'Ejecutivo de ventas',
+    text: 'Desde que voy a Jaime Corcho mi imagen en reuniones de negocios cambió completamente. Inversión que vale la pena.',
+    stars: 5,
+  },
+]
+
+const badges = [
+  { label: 'Barbería del Año', sub: 'Barranquilla 2024' },
+  { label: '+500 Clientes', sub: 'Satisfechos' },
+  { label: '4.9 / 5', sub: 'Google Reviews' },
+]
+---
+
+<section class="trust section" aria-labelledby="trust-heading">
+  <div class="container">
+
+    <!-- Heading -->
+    <div class="trust__header">
+      <span class="eyebrow gsap-fade">Experiencia Jaime Corcho</span>
+      <h2 id="trust-heading" class="gsap-up">
+        Lo que dicen nuestros<br /><em style="color:var(--color-gold);font-style:italic">clientes</em>
+      </h2>
+      <span class="gold-line gsap-fade"></span>
+    </div>
+
+    <!-- Testimonials grid -->
+    <div class="trust__grid">
+      {testimonials.map((t, i) => (
+        <article class="card trust__card gsap-up" style={`transition-delay:${i * 0.1}s`}>
+          <!-- Stars -->
+          <div class="trust__stars" aria-label={`${t.stars} de 5 estrellas`}>
+            {Array.from({ length: t.stars }).map(() => (
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#C2A878" aria-hidden="true">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+              </svg>
+            ))}
+          </div>
+          <!-- Quote -->
+          <blockquote class="trust__quote">
+            <p>"{t.text}"</p>
+          </blockquote>
+          <!-- Author -->
+          <footer class="trust__author">
+            <div class="trust__author-avatar" aria-hidden="true">
+              {t.name.charAt(0)}
+            </div>
+            <div>
+              <p class="trust__author-name">{t.name}</p>
+              <p class="trust__author-role">{t.role}</p>
+            </div>
+          </footer>
+        </article>
+      ))}
+    </div>
+
+    <!-- Badges authority -->
+    <div class="trust__badges gsap-fade">
+      {badges.map(b => (
+        <div class="trust__badge">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+          <div>
+            <strong class="trust__badge-label">{b.label}</strong>
+            <span class="trust__badge-sub">{b.sub}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+.trust__header { text-align: center; margin-bottom: 4rem; }
+.trust__header h2 { margin-top: 0.5rem; }
+
+.trust__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.trust__card { padding: 2rem; }
+
+.trust__stars { display: flex; gap: 3px; margin-bottom: 1.25rem; }
+
+.trust__quote p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--color-gray);
+  font-style: italic;
+}
+
+.trust__author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+.trust__author-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--color-gold);
+  color: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.trust__author-name {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--color-white);
+}
+.trust__author-role {
+  font-size: 0.75rem;
+  color: var(--color-gold);
+  letter-spacing: 0.05em;
+}
+
+/* Badges */
+.trust__badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 2.5rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-card);
+  flex-wrap: wrap;
+}
+.trust__badge {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  color: var(--color-gold);
+}
+.trust__badge svg { flex-shrink: 0; }
+.trust__badge > div { display: flex; flex-direction: column; gap: 0.15rem; }
+.trust__badge-label {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--color-white);
+}
+.trust__badge-sub {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray);
+}
+
+@media (max-width: 900px) {
+  .trust__grid { grid-template-columns: 1fr; }
+  .trust__badges { gap: 2rem; }
+}
+</style>
+
+<script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+gsap.utils.toArray<HTMLElement>('.trust__card').forEach((card, i) => {
+  gsap.from(card, {
+    y: 50,
+    opacity: 0,
+    duration: 0.8,
+    delay: i * 0.12,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: card, start: 'top 85%' },
+  })
+})
+
+gsap.from('.trust__badges', {
+  opacity: 0,
+  y: 30,
+  duration: 0.8,
+  ease: 'power3.out',
+  scrollTrigger: { trigger: '.trust__badges', start: 'top 88%' },
+})
+</script>

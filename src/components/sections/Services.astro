@@ -1,0 +1,286 @@
+---
+import { Image } from 'astro:assets'
+import haircutImg from '../../assets/service-haircut.png'
+import beardImg from '../../assets/service-beard.png'
+import facialImg from '../../assets/service-facial.png'
+
+const services = [
+  {
+    id: 'corte',
+    num: '01',
+    name: 'Corte de Autor',
+    image: haircutImg,
+    duration: '45 min',
+    price: '$65.000',
+    keyword: 'corte de cabello profesional Barranquilla',
+    desc: 'Análisis de morfología facial + técnica de corte de alta precisión. Más que un corte — una identidad visual construida para ti.',
+    benefits: [
+      'Análisis personalizado de tu morfología facial',
+      'Técnicas de corte europeas y americanas',
+      'Asesoría de estilo incluida',
+      'Acabado con productos de alta gama',
+    ],
+  },
+  {
+    id: 'barba',
+    num: '02',
+    name: 'Diseño de Barba',
+    image: beardImg,
+    duration: '30 min',
+    price: '$45.000',
+    keyword: 'diseño de barba Barranquilla',
+    desc: 'Perfilado y diseño adaptado específicamente a la estructura de tu rostro. La barba correcta transforma tu imagen por completo.',
+    benefits: [
+      'Perfilado con navaja de precisión',
+      'Diseño adaptado a tu estructura ósea',
+      'Tratamiento hidratante post-servicio',
+      'Recomendación de rutina de mantenimiento',
+    ],
+  },
+  {
+    id: 'facial',
+    num: '03',
+    name: 'Ritual Facial',
+    image: facialImg,
+    duration: '60 min',
+    price: '$80.000',
+    keyword: 'tratamiento facial masculino Barranquilla',
+    desc: 'Proceso completo de limpieza, hidratación y cuidado para la piel masculina. Tu piel como base de una imagen premium.',
+    benefits: [
+      'Limpieza profunda de poros',
+      'Hidratación con activos de alta concentración',
+      'Masaje facial relajante',
+      'Rutina de cuidado personalizada',
+    ],
+  },
+]
+---
+
+<section class="services section" aria-labelledby="services-heading">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="services__header">
+      <span class="eyebrow">Servicios</span>
+      <h2 id="services-heading" class="gsap-up">
+        Experiencias diseñadas<br />para <em style="color:var(--color-gold);font-style:italic">potenciar tu imagen</em>
+      </h2>
+      <span class="gold-line"></span>
+      <p class="services__intro gsap-up">
+        No ofrecemos servicios genéricos. Cada proceso está diseñado como
+        un ritual técnico y artístico, donde tu identidad visual es el resultado final.
+      </p>
+    </div>
+
+    <!-- Services list -->
+    <div class="services__list">
+      {services.map((s, i) => (
+        <article class="services__item gsap-up" id={s.id} aria-label={`Servicio: ${s.name}`}>
+
+          <div class="services__item-img-container">
+            <Image
+              src={s.image}
+              alt={s.keyword}
+              class="services__item-img"
+              width={400}
+              height={500}
+            />
+          </div>
+
+          <div class="services__item-body">
+            <div class="services__item-meta">
+              <span class="services__num" aria-hidden="true">{s.num}</span>
+              <span class="services__duration">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                {s.duration}
+              </span>
+            </div>
+            <h3 class="services__name">{s.name}</h3>
+            <p class="services__desc">{s.desc}</p>
+            <ul class="services__benefits">
+              {s.benefits.map(b => (
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C2A878" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  {b}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="services__item-cta">
+            <span class="services__price">{s.price}</span>
+            <a
+              href={`https://wa.me/573001234567?text=Hola%2C%20quiero%20agendar%20${encodeURIComponent(s.name)}`}
+              title={`Reservar ${s.name} — ${s.keyword}`}
+              class="btn-primary"
+              target="_blank"
+              rel="noopener"
+            >
+              Reservar
+            </a>
+          </div>
+
+        </article>
+      ))}
+    </div>
+
+    <!-- Secondary CTA -->
+    <div class="services__bottom gsap-fade">
+      <p>¿Tienes dudas sobre qué servicio es el ideal para ti?</p>
+      <a
+        href="https://wa.me/573001234567?text=Hola%2C%20necesito%20asesor%C3%ADa%20sobre%20qu%C3%A9%20servicio%20elegir"
+        title="Asesoría gratuita barbería premium Barranquilla"
+        class="btn-outline"
+        target="_blank"
+        rel="noopener"
+      >
+        Pide asesoría gratuita
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.services__header { max-width: 700px; margin-bottom: 4rem; }
+.services__intro { max-width: 60ch; margin-top: -0.5rem; }
+
+.services__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--color-border);
+}
+
+.services__item {
+  display: grid;
+  grid-template-columns: 240px 1fr auto;
+  gap: 3rem;
+  align-items: center;
+  padding: 0;
+  border-bottom: 1px solid var(--color-border);
+  transition: background 0.3s ease;
+  overflow: hidden;
+}
+.services__item:last-child { border-bottom: none; }
+.services__item:hover { background: var(--color-card); }
+
+.services__item-img-container {
+  height: 100%;
+  overflow: hidden;
+}
+.services__item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+  transition: transform 0.6s var(--ease-out), filter 0.6s var(--ease-out);
+}
+.services__item:hover .services__item-img {
+  transform: scale(1.05);
+  filter: grayscale(0.2) contrast(1.1);
+}
+
+.services__item-body { padding: 3rem 0; }
+
+.services__item-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+.services__num {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: 1;
+}
+.services__duration {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray);
+}
+
+.services__name {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+.services__desc {
+  font-size: 0.9rem;
+  max-width: 55ch;
+  margin-bottom: 1.25rem;
+}
+.services__benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.services__benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--color-gray);
+}
+.services__benefits svg { flex-shrink: 0; margin-top: 2px; }
+
+.services__item-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+.services__price {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-gold);
+}
+
+.services__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+}
+.services__bottom p { color: var(--color-gray); font-size: 0.95rem; }
+
+@media (max-width: 900px) {
+  .services__item {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .services__item-img-container {
+    height: 300px;
+  }
+  .services__item-body { padding: 2rem; }
+  .services__item-cta { padding: 0 2rem 2rem; align-items: flex-start; flex-direction: row; justify-content: space-between; }
+}
+</style>
+
+<script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+gsap.utils.toArray<HTMLElement>('.services__item').forEach((item, i) => {
+  gsap.from(item, {
+    x: -30,
+    opacity: 0,
+    duration: 0.7,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: item, start: 'top 85%' },
+  })
+})
+</script>

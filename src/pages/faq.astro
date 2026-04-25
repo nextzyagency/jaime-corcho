@@ -1,0 +1,429 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/ui/Header.astro'
+import Footer from '../components/ui/Footer.astro'
+
+const faqs = [
+  {
+    q: '¿Necesito agendar cita o puedo llegar sin reserva?',
+    a: 'Recomendamos agendar con antelación para garantizarte disponibilidad y atención 100% personalizada. Puedes reservar por WhatsApp en minutos. También atendemos walk-ins según disponibilidad del día.',
+  },
+  {
+    q: '¿Qué incluye el Corte de Autor de barbería premium en Barranquilla?',
+    a: 'Incluye análisis completo de tu morfología facial, asesoría de estilo personalizada, corte de precisión con técnicas europeas y americanas, y acabado con productos de alta gama.',
+  },
+  {
+    q: '¿Qué diferencia a Jaime Corcho de otras barberías en Barranquilla?',
+    a: 'Nuestro enfoque en la arquitectura del rostro. Somos los únicos en Barranquilla que realizan un análisis de morfología facial antes de cada servicio para garantizar resultados que potencien tu imagen personal y profesional.',
+  },
+  {
+    q: '¿Atienden todo tipo de cabello y barba?',
+    a: 'Sí. Nuestras técnicas se adaptan a cualquier tipo de cabello — liso, ondulado, rizado, afro — y a cualquier estructura de barba. La personalización es nuestra base de trabajo.',
+  },
+  {
+    q: '¿Cuánto tiempo dura una cita de diseño de barba en Barranquilla?',
+    a: 'El servicio de diseño de barba tiene una duración aproximada de 30 minutos. El Corte de Autor tarda 45 minutos y el Ritual Facial completo 60 minutos.',
+  },
+  {
+    q: '¿Cuáles son los precios de los servicios?',
+    a: 'Corte de Autor: $65.000 (45 min). Diseño de Barba: $45.000 (30 min). Ritual Facial: $80.000 (60 min). Todos los precios incluyen asesoría personalizada.',
+  },
+  {
+    q: '¿Ofrecen servicio de asesoría de imagen masculina en Barranquilla?',
+    a: 'La asesoría de imagen está incluida en todos nuestros servicios. Antes de cada corte o tratamiento realizamos un análisis para entender tus objetivos de imagen y recomendarte el servicio más adecuado.',
+  },
+]
+---
+
+<Layout
+  title="Contacto y FAQ | Jaime Corcho — Barbería Premium Barranquilla"
+  description="Contacta con Jaime Corcho, barbería premium en Barranquilla. Agenda tu cita por WhatsApp, teléfono o email. Preguntas frecuentes sobre corte de cabello, diseño de barba y ritual facial."
+  canonical="https://jaimecorcho.com/faq"
+>
+  <Header />
+  <main id="main-content">
+
+    <!-- Page Hero -->
+    <section class="faq-hero section" aria-label="Contacto barbería premium Barranquilla">
+      <div class="container faq-hero__inner">
+        <div>
+          <span class="eyebrow">FAQ y Contacto</span>
+          <h1 class="gsap-up">
+            Resolvemos tus dudas<br />
+            <em style="color:var(--color-gold);font-style:italic">antes de tu cita</em>
+          </h1>
+          <span class="gold-line"></span>
+          <p class="gsap-up">
+            Encuentra respuestas a las preguntas más frecuentes o
+            contáctanos directamente. Respondemos en menos de 2 horas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Main content -->
+    <section class="faq-contact section" aria-labelledby="faq-contact-heading">
+      <div class="container faq-contact__grid">
+
+        <!-- FAQ accordion -->
+        <div>
+          <span class="eyebrow">Preguntas frecuentes</span>
+          <h2 id="faq-contact-heading" class="gsap-up" style="margin-bottom:2rem">
+            Lo que más nos preguntan
+          </h2>
+
+          <div class="faq-list" role="list">
+            {faqs.map((item, i) => (
+              <div class="faq-item gsap-up" role="listitem">
+                <button
+                  class="faq-question"
+                  aria-expanded="false"
+                  aria-controls={`faq-ans-${i}`}
+                  id={`faq-q-${i}`}
+                >
+                  <span>{item.q}</span>
+                  <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div
+                  class="faq-answer"
+                  id={`faq-ans-${i}`}
+                  role="region"
+                  aria-labelledby={`faq-q-${i}`}
+                  hidden
+                >
+                  <p>{item.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Contact form + info -->
+        <aside class="faq-contact__aside">
+
+          <!-- Contact form -->
+          <div class="contact-form">
+            <h3>Envíanos un mensaje</h3>
+            <p>Responderemos a tu consulta en el menor tiempo posible.</p>
+
+            <form class="contact-form__form" id="contact-form" novalidate>
+              <div class="form-group">
+                <label for="contact-name">Nombre completo</label>
+                <input
+                  type="text"
+                  id="contact-name"
+                  name="name"
+                  placeholder="Tu nombre"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="contact-phone">WhatsApp / Teléfono</label>
+                <input
+                  type="tel"
+                  id="contact-phone"
+                  name="phone"
+                  placeholder="+57 300 000 0000"
+                  autocomplete="tel"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="contact-service">Servicio de interés</label>
+                <select id="contact-service" name="service">
+                  <option value="">Selecciona un servicio</option>
+                  <option value="corte">Corte de Autor — $65.000</option>
+                  <option value="barba">Diseño de Barba — $45.000</option>
+                  <option value="facial">Ritual Facial — $80.000</option>
+                  <option value="consulta">Consulta general</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="contact-message">Mensaje (opcional)</label>
+                <textarea id="contact-message" name="message" rows="3" placeholder="Cuéntanos en qué podemos ayudarte"></textarea>
+              </div>
+              <button type="submit" class="btn-primary contact-form__submit">
+                Enviar consulta
+              </button>
+            </form>
+          </div>
+
+          <!-- Divider -->
+          <div class="faq-contact__divider">
+            <span>o contáctanos directamente</span>
+          </div>
+
+          <!-- Contact channels -->
+          <div class="contact-channels">
+            <a
+              href="https://wa.me/573001234567"
+              title="WhatsApp Jaime Corcho Barbería Barranquilla"
+              class="contact-channel"
+              target="_blank"
+              rel="noopener"
+            >
+              <div class="contact-channel__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </div>
+              <div>
+                <strong>WhatsApp</strong>
+                <span>+57 300 123 4567</span>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="contact-channel__arrow" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
+            <a href="tel:+573001234567" title="Llamar a Jaime Corcho Barbería" class="contact-channel">
+              <div class="contact-channel__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14h0v2.92z"/></svg>
+              </div>
+              <div>
+                <strong>Teléfono</strong>
+                <span>+57 300 123 4567</span>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="contact-channel__arrow" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
+            <a href="mailto:info@jaimecorcho.com" title="Email Jaime Corcho Barbería" class="contact-channel">
+              <div class="contact-channel__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <strong>Email</strong>
+                <span>info@jaimecorcho.com</span>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="contact-channel__arrow" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
+            <!-- Location -->
+            <div class="contact-location">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2A878" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div>
+                <strong>Ubicación</strong>
+                <span>Alto Prado, Barranquilla, Atlántico</span>
+                <span>Lun – Sáb: 9:00 AM – 8:00 PM</span>
+              </div>
+            </div>
+          </div>
+
+        </aside>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+.faq-hero__inner { padding-top: 8rem; max-width: 700px; }
+
+.faq-contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 5rem;
+  align-items: start;
+}
+
+/* FAQ accordion */
+.faq-list { display: flex; flex-direction: column; }
+.faq-item { border-bottom: 1px solid var(--color-border); }
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  font-size: 0.925rem;
+  font-weight: 500;
+  color: var(--color-white);
+  text-align: left;
+  transition: color 0.2s;
+}
+.faq-question:hover,
+.faq-question[aria-expanded="true"] { color: var(--color-gold); }
+.faq-chevron {
+  flex-shrink: 0;
+  transition: transform 0.35s var(--ease-smooth), stroke 0.2s;
+  stroke: var(--color-gray);
+}
+.faq-question[aria-expanded="true"] .faq-chevron {
+  transform: rotate(180deg);
+  stroke: var(--color-gold);
+}
+.faq-answer {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s var(--ease-smooth), padding 0.3s ease;
+}
+.faq-answer:not([hidden]) { max-height: 300px; padding-bottom: 1.25rem; }
+.faq-answer[hidden] { display: block !important; }
+.faq-answer p { font-size: 0.875rem; line-height: 1.8; }
+
+/* Contact aside */
+.faq-contact__aside { display: flex; flex-direction: column; gap: 1.5rem; position: sticky; top: 7rem; }
+
+.contact-form {
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-card);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.contact-form h3 { font-size: 1.2rem; margin-bottom: 0; }
+.contact-form > p { font-size: 0.875rem; margin-bottom: 0.5rem; }
+
+.contact-form__form { display: flex; flex-direction: column; gap: 1rem; margin-top: 0.5rem; }
+
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group label {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  padding: 0.75rem 1rem;
+  outline: none;
+  transition: border-color 0.25s;
+  resize: none;
+  appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--color-gold); }
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--color-gray-dark); }
+.form-group select option { background: var(--color-card); }
+
+.contact-form__submit { align-self: flex-start; margin-top: 0.5rem; }
+
+.faq-contact__divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-gray);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.faq-contact__divider::before,
+.faq-contact__divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* Channels */
+.contact-channels { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--color-border); }
+.contact-channel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  transition: background 0.2s;
+}
+.contact-channel:hover { background: var(--color-card); }
+.contact-channel__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+.contact-channel > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+}
+.contact-channel strong { font-size: 0.875rem; color: var(--color-white); }
+.contact-channel span { font-size: 0.8rem; color: var(--color-gray); }
+.contact-channel__arrow { color: var(--color-gray); margin-left: auto; }
+.contact-channel:hover .contact-channel__arrow { color: var(--color-gold); }
+
+.contact-location {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+}
+.contact-location > svg { margin-top: 3px; flex-shrink: 0; }
+.contact-location > div { display: flex; flex-direction: column; gap: 0.2rem; }
+.contact-location strong { font-size: 0.875rem; color: var(--color-white); }
+.contact-location span { font-size: 0.8rem; color: var(--color-gray); }
+
+@media (max-width: 900px) {
+  .faq-contact__grid { grid-template-columns: 1fr; }
+  .faq-contact__aside { position: static; }
+}
+</style>
+
+<script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+// FAQ accordion
+document.querySelectorAll<HTMLButtonElement>('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true'
+    const answer   = document.getElementById(btn.getAttribute('aria-controls')!)!
+
+    document.querySelectorAll<HTMLButtonElement>('.faq-question').forEach(b => {
+      b.setAttribute('aria-expanded', 'false')
+      const a = document.getElementById(b.getAttribute('aria-controls')!)!
+      a.setAttribute('hidden', '')
+      a.style.maxHeight = '0'
+      a.style.paddingBottom = '0'
+    })
+
+    if (!expanded) {
+      btn.setAttribute('aria-expanded', 'true')
+      answer.removeAttribute('hidden')
+      answer.style.maxHeight = answer.scrollHeight + 'px'
+      answer.style.paddingBottom = '1.25rem'
+    }
+  })
+})
+
+// Scroll animations
+gsap.utils.toArray<HTMLElement>('.faq-item').forEach((item, i) => {
+  gsap.from(item, {
+    y: 20,
+    opacity: 0,
+    duration: 0.6,
+    delay: i * 0.07,
+    ease: 'power2.out',
+    scrollTrigger: { trigger: item, start: 'top 88%' },
+  })
+})
+
+// Form submit → WhatsApp
+const form = document.getElementById('contact-form') as HTMLFormElement
+form?.addEventListener('submit', e => {
+  e.preventDefault()
+  const name    = (form.querySelector('#contact-name')  as HTMLInputElement).value
+  const phone   = (form.querySelector('#contact-phone') as HTMLInputElement).value
+  const service = (form.querySelector('#contact-service') as HTMLSelectElement).value
+  const msg     = (form.querySelector('#contact-message') as HTMLTextAreaElement).value
+  const text    = `Hola, soy ${name}. Me interesa: ${service || 'consulta general'}. Tel: ${phone}. ${msg}`
+  window.open(`https://wa.me/573001234567?text=${encodeURIComponent(text)}`, '_blank')
+})
+</script>

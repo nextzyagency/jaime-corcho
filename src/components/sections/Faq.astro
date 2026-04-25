@@ -1,0 +1,236 @@
+---
+const faqs = [
+  {
+    q: '¿Necesito agendar cita o puedo llegar sin reserva?',
+    a: 'Recomendamos agendar con antelación para garantizarte disponibilidad y atención 100% personalizada. Puedes reservar por WhatsApp en minutos. También atendemos walk-ins según disponibilidad del día.',
+  },
+  {
+    q: '¿Qué incluye el Corte de Autor de barbería premium en Barranquilla?',
+    a: 'Incluye análisis completo de tu morfología facial, asesoría de estilo personalizada, corte de precisión con técnicas europeas y americanas, y acabado con productos de alta gama. Es una experiencia completa, no solo un corte de cabello.',
+  },
+  {
+    q: '¿Qué diferencia a Jaime Corcho de otras barberías en Barranquilla?',
+    a: 'Nuestro enfoque en la arquitectura del rostro. Somos los únicos en Barranquilla que realizan un análisis de morfología facial antes de cada servicio para garantizar resultados que potencien tu imagen personal y profesional.',
+  },
+  {
+    q: '¿Atienden todo tipo de cabello y barba?',
+    a: 'Sí. Nuestras técnicas se adaptan a cualquier tipo de cabello — liso, ondulado, rizado, afro — y a cualquier estructura de barba. La personalización es nuestra base de trabajo.',
+  },
+  {
+    q: '¿Cuánto tiempo dura una cita de diseño de barba en Barranquilla?',
+    a: 'El servicio de diseño de barba tiene una duración aproximada de 30 minutos. El Corte de Autor tarda 45 minutos y el Ritual Facial completo 60 minutos. Puntualidad garantizada.',
+  },
+]
+---
+
+<section class="faq section" aria-labelledby="faq-heading">
+  <div class="container">
+
+    <div class="faq__header">
+      <span class="eyebrow">FAQ</span>
+      <h2 id="faq-heading" class="gsap-up">
+        Preguntas frecuentes sobre<br />
+        <em style="color:var(--color-gold);font-style:italic">nuestra barbería</em>
+      </h2>
+      <span class="gold-line gsap-fade"></span>
+    </div>
+
+    <div class="faq__grid">
+      <!-- List -->
+      <div class="faq__list" role="list">
+        {faqs.map((item, i) => (
+          <div class="faq__item gsap-up" role="listitem">
+            <button
+              class="faq__question"
+              aria-expanded="false"
+              aria-controls={`faq-answer-${i}`}
+              id={`faq-btn-${i}`}
+            >
+              <span>{item.q}</span>
+              <svg class="faq__icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div
+              class="faq__answer"
+              id={`faq-answer-${i}`}
+              role="region"
+              aria-labelledby={`faq-btn-${i}`}
+              hidden
+            >
+              <p>{item.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Contact card -->
+      <aside class="faq__contact gsap-right">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C2A878" stroke-width="1.5" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <h3>¿No encuentras tu respuesta?</h3>
+        <p>Escríbenos directamente por WhatsApp y te respondemos en menos de 2 horas durante nuestro horario de atención.</p>
+        <a
+          href="https://wa.me/573001234567?text=Hola%2C%20tengo%20una%20consulta%20sobre%20sus%20servicios"
+          title="Consultar dudas sobre barbería premium en Barranquilla"
+          class="btn-primary"
+          target="_blank"
+          rel="noopener"
+        >
+          Escribir ahora
+        </a>
+        <div class="faq__contact-divider"></div>
+        <div class="faq__contact-links">
+          <a href="tel:+573001234567" title="Llamar a Jaime Corcho Barbería">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14h0v2.92z"/></svg>
+            +57 300 123 4567
+          </a>
+          <a href="mailto:info@jaimecorcho.com" title="Email Jaime Corcho Barbería">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            info@jaimecorcho.com
+          </a>
+        </div>
+      </aside>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.faq__header { margin-bottom: 4rem; }
+
+.faq__grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 4rem;
+  align-items: start;
+}
+
+.faq__list { display: flex; flex-direction: column; }
+
+.faq__item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq__question {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.975rem;
+  font-weight: 500;
+  color: var(--color-white);
+  text-align: left;
+  transition: color 0.2s;
+}
+.faq__question:hover { color: var(--color-gold); }
+.faq__question[aria-expanded="true"] { color: var(--color-gold); }
+.faq__question[aria-expanded="true"] .faq__icon {
+  transform: rotate(180deg);
+  stroke: var(--color-gold);
+}
+
+.faq__icon {
+  flex-shrink: 0;
+  transition: transform 0.35s var(--ease-smooth), stroke 0.2s;
+  stroke: var(--color-gray);
+}
+
+.faq__answer {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s var(--ease-smooth), padding 0.3s ease;
+}
+.faq__answer:not([hidden]) {
+  max-height: 300px;
+  padding-bottom: 1.5rem;
+}
+.faq__answer[hidden] { display: block !important; } /* override to animate */
+.faq__answer p { font-size: 0.9rem; line-height: 1.8; }
+
+/* Contact card */
+.faq__contact {
+  padding: 2.5rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-card);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: sticky;
+  top: 7rem;
+}
+.faq__contact h3 {
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+}
+.faq__contact p { font-size: 0.875rem; }
+.faq__contact .btn-primary { align-self: flex-start; margin-top: 0.5rem; }
+.faq__contact-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border);
+  margin: 0.5rem 0;
+}
+.faq__contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.faq__contact-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.85rem;
+  color: var(--color-gray);
+  transition: color 0.2s;
+}
+.faq__contact-links a:hover { color: var(--color-gold); }
+
+@media (max-width: 900px) {
+  .faq__grid { grid-template-columns: 1fr; }
+  .faq__contact { position: static; }
+}
+</style>
+
+<script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+// Accordion
+document.querySelectorAll<HTMLButtonElement>('.faq__question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true'
+    const answer   = document.getElementById(btn.getAttribute('aria-controls')!)!
+
+    // Close all
+    document.querySelectorAll<HTMLButtonElement>('.faq__question').forEach(b => {
+      b.setAttribute('aria-expanded', 'false')
+      const a = document.getElementById(b.getAttribute('aria-controls')!)!
+      a.setAttribute('hidden', '')
+      a.style.maxHeight = '0'
+      a.style.paddingBottom = '0'
+    })
+
+    if (!expanded) {
+      btn.setAttribute('aria-expanded', 'true')
+      answer.removeAttribute('hidden')
+      answer.style.maxHeight = answer.scrollHeight + 'px'
+      answer.style.paddingBottom = '1.5rem'
+    }
+  })
+})
+
+// Scroll animation
+gsap.utils.toArray<HTMLElement>('.faq__item').forEach((item, i) => {
+  gsap.from(item, {
+    y: 20,
+    opacity: 0,
+    duration: 0.6,
+    delay: i * 0.07,
+    ease: 'power2.out',
+    scrollTrigger: { trigger: item, start: 'top 88%' },
+  })
+})
+</script>
